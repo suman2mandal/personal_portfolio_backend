@@ -34,6 +34,13 @@ const certificateSchema = new Schema({
         unique: true,
         trim: true,
         minlength: 3
+    },
+    image:{
+        type: String,
+        required: true,
+        unique: true,
+        trim: true,
+        minlength: 3
     }
 })
 
