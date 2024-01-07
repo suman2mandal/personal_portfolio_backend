@@ -43,6 +43,12 @@ const blogpostsSchema = new Schema({
         trim: true,
         minlength: 3
     },
+    link:{
+        type: String,
+        trim: true,
+        minlength: 3,
+        required: true
+    },
 },{
     timestamps: true,
 });

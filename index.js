@@ -98,16 +98,15 @@ try {
             // BlogPosts Route
             app.get('/AllBlogPosts', async (req, res) => {
                 const allposts = await Blogposts.find();
-                // const promises = allposts.map(async (post, index) => {
-                //     try {
-                //         const url = await getObjectURL(`blogPosts/${post.dataURL}`);
-                //         console.log(url);
-                //         post.dataURL = url;
-                //     } catch(e) {
-                //         console.log(e);
-                //     }
-                // });
-                // await Promise.all(promises);
+                const promises = allposts.map(async (post, index) => {
+                    try {
+                        const url = await getObjectURL(`postImages/${post.bannerImage}`);
+                        post.bannerImage = url;
+                    } catch(e) {
+                        console.log(e);
+                    }
+                });
+                await Promise.all(promises);
                 res.send(allposts);
             });
 
