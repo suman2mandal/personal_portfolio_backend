@@ -33,13 +33,13 @@ const blogpostsSchema = new Schema({
         minlength: 3
     },
     inPostLinks:{
-        type: String,
+        type: [Schema.Types.Mixed],
         required: true,
         trim: true,
         minlength: 3
     },
     otherPostLink:{
-        type: String,
+        type: [Schema.Types.Mixed],
         trim: true,
         minlength: 3
     },

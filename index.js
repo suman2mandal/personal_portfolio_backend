@@ -114,11 +114,7 @@ try {
             app.post('/GetBlogPosts', async (req, res) => {
                 try {
                     const { post } = req.body;
-                    console.log('Received post:', post);
-
                     const url = await getObjectURL(`blogPosts/${post}`);
-                    console.log('Object URL:', url);
-
                     res.send(url);
                 } catch (error) {
                     console.error('Error processing request:', error);
@@ -126,6 +122,18 @@ try {
                 }
             });
 
+            app.post('/GetBlogData', async (req, res) => {
+                try {
+                    const { id } = req.body;
+                    console.log('Received post:', id);
+                    const postdata = await Blogposts.findById(id);
+                    console.log(postdata,"post");
+                    res.send(postdata);
+                } catch (error) {
+                    console.error('Error processing request:', error);
+                    res.status(500).send({ error: 'Internal Server Error' });
+                }
+            });
 
             // Start the server
             app.listen(PORT, () => {
